@@ -1,5 +1,6 @@
 package com.gank.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,12 @@ public class UsuarioController {
 	
 	@GetMapping
 	public ModelAndView listar() {
-		List<Usuario> lista = repository.findAll();
+		List<Usuario> lista = new ArrayList<Usuario>(); //repository.findAll();
+		Usuario usuario = new Usuario();
+		usuario.setId(1l);
+		usuario.setNome("Fulano");
+
+		lista.add(usuario);
 		
 		ModelAndView modelAndView = new ModelAndView("usuarios");
 		modelAndView.addObject("usuarios", lista);
